@@ -1,26 +1,59 @@
-@import "tailwindcss";
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
 
+/* ===== THEME VARIABLES ===== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0a1628;
+  --bg-elevated: rgba(255,255,255,0.04);
+  --nav-bg: rgba(10,22,40,0.85);
+  --border: rgba(255,255,255,0.08);
+  --border-soft: rgba(255,255,255,0.06);
+  --text: #f0f4ff;
+  --text-muted: rgba(240,244,255,0.6);
+  --text-faint: rgba(240,244,255,0.5);
+  --text-faint2: rgba(240,244,255,0.35);
+  --accent: #4ade80;
+  --accent-hover: #22c55e;
+  --accent-soft: rgba(74,222,128,0.1);
+  --accent-border: rgba(74,222,128,0.25);
+  --btn-primary-text: #0a1628;
+  --card-shadow: 0 4px 16px rgba(0,0,0,0.35);
+  --bubble-bg: rgba(10,22,40,0.85);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme='light'] {
+  --bg: #ffffff;
+  --bg-elevated: #f2f6f4;
+  --nav-bg: rgba(255,255,255,0.9);
+  --border: rgba(10,22,40,0.1);
+  --border-soft: rgba(10,22,40,0.07);
+  --text: #0a1628;
+  --text-muted: rgba(10,22,40,0.7);
+  --text-faint: rgba(10,22,40,0.6);
+  --text-faint2: rgba(10,22,40,0.45);
+  --accent: #16a34a;
+  --accent-hover: #15803d;
+  --accent-soft: rgba(22,163,74,0.08);
+  --accent-border: rgba(22,163,74,0.3);
+  --btn-primary-text: #ffffff;
+  --card-shadow: 0 4px 16px rgba(10,22,40,0.1);
+  --bubble-bg: #ffffff;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
